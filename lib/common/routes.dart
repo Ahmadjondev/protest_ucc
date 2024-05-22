@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:protest/features/ui/home/presentation/home_screen.dart';
+import 'package:protest/features/ui/leaderboard/presentation/leaderboard_screen.dart';
+import 'package:protest/features/ui/library/presentation/library_screen.dart';
+import 'package:protest/features/ui/main/presentation/main_screen.dart';
+import 'package:protest/features/ui/profile/presentation/profile_screen.dart';
 import 'package:protest/features/ui/splash/presentation/onboard_screen.dart';
 import 'package:protest/features/ui/splash/presentation/splash_screen.dart';
 
@@ -30,7 +35,6 @@ class AppRoutes {
   static final GoRouter router = GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: Routes.splash,
-
     ///splash
     debugLogDiagnostics: true,
     routes: <RouteBase>[
@@ -48,22 +52,74 @@ class AppRoutes {
           return const OnboardScreen();
         },
       ),
-      // ShellRoute(
-      //   navigatorKey: _shellNavigatorKey,
-      //   builder: (BuildContext context, GoRouterState state, Widget child) {
-      //     return MainPage(
-      //       child: child,
-      //     );
-      //   },
-      //   routes: <RouteBase>[
-      //     GoRoute(
-      //       path: Routes.home,
-      //       builder: (BuildContext context, GoRouterState state) {
-      //         return const HomePage();
-      //       },
-      //     ),
-      //   ],
-      // ),
+      StatefulShellRoute.indexedStack(
+        parentNavigatorKey: rootNavigatorKey,
+        branches: <StatefulShellBranch>[
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                name: "Home",
+                path: Routes.home,
+                pageBuilder: (context, state) {
+                  return buildPageWithDefaultTransition(
+                      context: context, child: HomeScreen(), state: state);
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.rating,
+                name: "Rating",
+                pageBuilder: (context, state) {
+                  return buildPageWithDefaultTransition(
+                      context: context,
+                      child: const LeaderboardScreen(),
+                      state: state);
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.library,
+                name: "Library",
+                pageBuilder: (context, state) {
+                  return buildPageWithDefaultTransition(
+                      context: context,
+                      child: const LibraryScreen(),
+                      state: state);
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.profile,
+                name: "Profile",
+                pageBuilder: (context, state) {
+                  return buildPageWithDefaultTransition(
+                      context: context,
+                      child: const ProfileScreen(),
+                      state: state);
+                },
+                builder: (BuildContext context, GoRouterState state) {
+                  return const ProfileScreen();
+                },
+              ),
+            ],
+          )
+        ],
+        pageBuilder: (context, state, navigationShell) {
+          return buildPageWithDefaultTransition(
+              context: context,
+              child: MainScreen(child: navigationShell),
+              state: state);
+        },
+      ),
     ],
   );
 

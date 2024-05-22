@@ -52,11 +52,12 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
-    super.dispose();
     if (animationController.isAnimating) {
       animationController.stop();
     }
     animationController.dispose();
+    super.dispose();
+
   }
 
   @override

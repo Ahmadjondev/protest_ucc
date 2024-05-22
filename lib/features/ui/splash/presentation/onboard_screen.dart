@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:protest/common/app_colors.dart';
 import 'package:protest/common/app_text_styles.dart';
 import 'package:protest/common/constants.dart';
 import 'package:protest/features/widgets/gradient_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../../common/routes.dart';
 
 class OnboardScreen extends StatefulWidget {
   const OnboardScreen({super.key});
@@ -95,7 +98,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
       padding: const EdgeInsets.only(bottom: 20, top: 60, left: 20, right: 20),
       child: GradientButton(
         onPressed: () async {
-          if (currentIndex < onboardingData.length - 1) {
+          if ((controller.page?.toInt() ?? 0) < onboardingData.length - 2) {
             controller.nextPage(
                 duration: const Duration(milliseconds: 350),
                 curve: Curves.fastOutSlowIn);
@@ -103,7 +106,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
           } else {
             SharedPreferences pref = await SharedPreferences.getInstance();
             pref.setBool(SharedConstants.oboard, true);
-
+            context.go(Routes.home);
             // context.go(Routes.login);
           }
         },

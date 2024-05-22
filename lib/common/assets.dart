@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
 
+  static const String iconsCompetition = 'assets/icons/competition.svg';
+  static const String iconsCompetitionActive = 'assets/icons/competition_active.svg';
   static const String iconsHome = 'assets/icons/home.svg';
   static const String iconsHomeActive = 'assets/icons/home_active.svg';
   static const String iconsLoading = 'assets/icons/loading.svg';
