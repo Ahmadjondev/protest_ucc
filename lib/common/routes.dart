@@ -8,6 +8,8 @@ import 'package:protest/features/ui/main/presentation/main_screen.dart';
 import 'package:protest/features/ui/profile/presentation/profile_screen.dart';
 import 'package:protest/features/ui/splash/presentation/onboard_screen.dart';
 import 'package:protest/features/ui/splash/presentation/splash_screen.dart';
+import 'package:protest/features/ui/uzbmb/presentation/uzbmb_quiz_screen.dart';
+import 'package:protest/features/ui/uzbmb/presentation/uzbmb_screen.dart';
 
 class Routes {
   Routes._();
@@ -25,6 +27,10 @@ class Routes {
   static String get library => '/library';
 
   static String get profile => '/profile';
+
+  static String get uzbmb => '/uzbmb';
+
+  static String get uzbmbStart => '/uzbmb_start';
 }
 
 class AppRoutes {
@@ -35,6 +41,7 @@ class AppRoutes {
   static final GoRouter router = GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: Routes.splash,
+
     ///splash
     debugLogDiagnostics: true,
     routes: <RouteBase>[
@@ -50,6 +57,23 @@ class AppRoutes {
         path: Routes.onboard,
         builder: (BuildContext context, GoRouterState state) {
           return const OnboardScreen();
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: Routes.uzbmb,
+        builder: (BuildContext context, GoRouterState state) {
+          return UzbmbScreen();
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: Routes.uzbmbStart,
+        builder: (BuildContext context, GoRouterState state) {
+          var id = state.extra as int;
+          return UzbmbQuizScreen(
+            id: id,
+          );
         },
       ),
       StatefulShellRoute.indexedStack(

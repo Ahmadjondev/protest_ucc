@@ -5,6 +5,9 @@ class AppColors {
   static Color grey = const Color(0xffE0E0E0);
   static const Color black = Color(0xFF171616);
   static const Color white = Color(0xFFF5F5F5);
+
+  static Color borderColor = Color(0xFFE8E8E8);
+  static Color backgroundColor = Color(0xFFFBFBFB);
   static LinearGradient gradient = const LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

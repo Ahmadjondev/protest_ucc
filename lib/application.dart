@@ -13,9 +13,9 @@ class ProTest extends StatelessWidget {
         child: MaterialApp.router(
           routerConfig: AppRoutes.router,
           theme: ThemeData(
-            scaffoldBackgroundColor: Colors.white,
+            // scaffoldBackgroundColor: Colors.white,
           ),
-          title: 'social_media',
+          title: 'ProTest',
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.light,
         ),

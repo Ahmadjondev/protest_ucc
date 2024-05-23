@@ -2,11 +2,21 @@
 class Assets {
   Assets._();
 
+  static const String avatarsAvatar1 = 'assets/avatars/avatar1.png';
+  static const String avatarsAvatar2 = 'assets/avatars/avatar2.png';
+  static const String avatarsAvatar3 = 'assets/avatars/avatar3.png';
+  static const String avatarsAvatar4 = 'assets/avatars/avatar4.png';
+  static const String avatarsAvatar5 = 'assets/avatars/avatar5.png';
+  static const String avatarsAvatar6 = 'assets/avatars/avatar6.png';
+  static const String avatarsAvatar7 = 'assets/avatars/avatar7.png';
+  static const String avatarsAvatar8 = 'assets/avatars/avatar8.png';
+  static const String iconsBackDtm = 'assets/icons/back_dtm.svg';
   static const String iconsCompetition = 'assets/icons/competition.svg';
   static const String iconsCompetitionActive = 'assets/icons/competition_active.svg';
   static const String iconsHome = 'assets/icons/home.svg';
   static const String iconsHomeActive = 'assets/icons/home_active.svg';
   static const String iconsLoading = 'assets/icons/loading.svg';
+  static const String iconsNotification = 'assets/icons/notification.svg';
   static const String iconsOnboard1 = 'assets/icons/onboard1.svg';
   static const String iconsOnboard2 = 'assets/icons/onboard2.svg';
   static const String iconsOnboard3 = 'assets/icons/onboard3.svg';
@@ -14,6 +24,7 @@ class Assets {
   static const String iconsProfileActive = 'assets/icons/profile_active.svg';
   static const String iconsRating = 'assets/icons/rating.svg';
   static const String iconsRatingActive = 'assets/icons/rating_active.svg';
+  static const String iconsTimer = 'assets/icons/timer.svg';
   static const String iconsTitle = 'assets/icons/title.svg';
 
 }
